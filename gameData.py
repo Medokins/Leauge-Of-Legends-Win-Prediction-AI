@@ -1,3 +1,4 @@
+#this is an example of game data format just after game starts
 gameDataDict = {
     "gameId": 3018919468,
     "mapId": 12,
@@ -274,18 +275,3 @@ gameDataDict = {
     "gameStartTime": 0,
     "gameLength": 0
 }
-
-summonerNames = {"redTeam": [], "blueTeam": []}
-encryptedSummonersID = {"redTeam": [], "blueTeam": []}
-
-for i in range(len(gameDataDict) - 1):
-    if gameDataDict["participants"][i]["teamId"] == 200:
-        summonerNames["redTeam"].append(gameDataDict["participants"][i]["summonerName"])
-        encryptedSummonersID["redTeam"].append(gameDataDict["participants"][i]["summonerId"])
-    elif gameDataDict["participants"][i]["teamId"] == 100:
-        summonerNames["blueTeam"].append(gameDataDict["participants"][i]["summonerName"])
-        encryptedSummonersID["blueTeam"].append(gameDataDict["participants"][i]["summonerId"])
-    else:
-        print("He is a spectator")
-
-print(len(summonerNames["redTeam"]))
