@@ -7,14 +7,6 @@ from sklearn.feature_selection import chi2
 df = pd.read_csv("../datasets/LeaugeOfLegends.csv")
 
 X = df.drop('blueWins', axis = 1).values
-X = preprocessing.scale(X)
 y = df['blueWins'].values
 
 bestfeatures = SelectKBest(score_func=chi2, k=10)
-# fit = bestfeatures.fit(X,y)
-# dfscores = pd.DataFrame(fit.scores_)
-# dfcolumns = pd.DataFrame(X.columns)
-# featureScores = pd.concat([dfcolumns,dfscores],axis=1)
-# featureScores.columns = ['Specs','Score']
-
-# print(featureScores.nlargest(10,'Score'))
