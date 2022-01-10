@@ -2,12 +2,13 @@ import requests
 import json
 from items import items
 
-f = open("C:/Users/medok/OneDrive/Desktop/Python/Leauge of legends/apiKey.txt", "r")
+f = open("C:/Users/medok/OneDrive/Desktop/Python/Leauge of legends/apiKey.txt", "r") #path to the apiKey file
 apiKey = f.read()
 mainSummoner = "Aaron II"
-time = 10
 
-def getData(mainSummoner, time):
+def getData(mainSummoner, verboose):
+
+    time = 10 #time on which the AI is trained
 
     encryptedSummonerID = json.loads(requests.get(f"https://eun1.api.riotgames.com/lol/summoner/v4/summoners/by-name/{mainSummoner}?api_key={apiKey}").text)["id"]
     gameDataDict  = json.loads(requests.get(f"https://eun1.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/{encryptedSummonerID}?api_key={apiKey}").text)
@@ -84,19 +85,20 @@ def getData(mainSummoner, time):
     redGoldPerMin = redTotalGold / time
     blueGoldDiff = blueTotalGold - redTotalGold
 
-    print(f"Blue Kills {blueKills}\
-            \nblueDeaths {blueDeaths}\
-            \nblueAssits {blueAssists}\
-            \nblueTotalGold {blueTotalGold}\
-            \nblueTotalMinionsKilled {blueTotalMinionsKilled}\
-            \nblueGoldDiff {blueGoldDiff}\
-            \nblueCSPerMin {blueCSPerMin}\
-            \nblueGoldPerMin {blueGoldPerMin}\
-            \nredAssists {redAssists}\
-            \nredTotalGold {redTotalGold}\
-            \nredTotalMinionsKilled {redTotalMinionsKilled}\
-            \nredCSPerMin {redCSPerMin}\
-            \nredGoldPerMin {redGoldPerMin}")
+    if verboose:
+        print(f"Blue Kills {blueKills}\
+                \nblueDeaths {blueDeaths}\
+                \nblueAssits {blueAssists}\
+                \nblueTotalGold {blueTotalGold}\
+                \nblueTotalMinionsKilled {blueTotalMinionsKilled}\
+                \nblueGoldDiff {blueGoldDiff}\
+                \nblueCSPerMin {blueCSPerMin}\
+                \nblueGoldPerMin {blueGoldPerMin}\
+                \nredAssists {redAssists}\
+                \nredTotalGold {redTotalGold}\
+                \nredTotalMinionsKilled {redTotalMinionsKilled}\
+                \nredCSPerMin {redCSPerMin}\
+                \nredGoldPerMin {redGoldPerMin}")
 
     return [summonerNames, blueKills, blueDeaths, 
             blueAssists, blueTotalGold, blueTotalMinionsKilled,

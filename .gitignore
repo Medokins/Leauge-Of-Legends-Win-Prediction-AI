@@ -1,4 +1,4 @@
 apiKey.txt
-datests
-_pycache_
+datasets/
+__pycache__/
 .DS_Store

@@ -50,14 +50,12 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_
 clf = svm.SVC(kernel = 'linear')
 clf.fit(X_train, y_train) 
 
-print(clf.score(X_test, y_test))
-
-# neverSeenData =            [blueKills, blueDeaths, blueAssists, blueTotalGold, blueTotalMinionsKilled, blueGoldDiff, blueCSPerMin, blueGoldPerMin, redAssists, redTotalGold, redTotalMinionsKilled,redCSPerMin, redGoldPerMin] 16
-#neverSeenData = [5,        13,            3,          15305,             209,                -2615,          20.9,       1530.5,          11,        17920,                157,            15.7,           1792.0]
+#print(clf.score(X_test, y_test))
+#neverSeenData = [blueKills, blueDeaths, blueAssists, blueTotalGold, blueTotalMinionsKilled, blueGoldDiff, blueCSPerMin, blueGoldPerMin, redAssists, redTotalGold, redTotalMinionsKilled,redCSPerMin, redGoldPerMin]
 neverSeenData=[26, 19, 58, 11450, 100, -10050,10, 4145, 35, 21500, 60, 6, 3140]
 
 if liveGame:
-    gameData = getData(mainSummoner=mainSummonerName, time=10)
+    gameData = getData(mainSummoner=mainSummonerName, verboose=True)
     print(gameData[0])
     if clf.predict([gameData[1:]]) == 1:
         print("blue team will most likely win")
