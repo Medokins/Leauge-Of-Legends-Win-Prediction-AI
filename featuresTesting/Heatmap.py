@@ -1,4 +1,3 @@
-from numpy.ma.core import default_fill_value
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -14,6 +13,6 @@ corrmat = df.corr()
 top_corr_features = corrmat.index
 plt.figure(figsize=(40,40))
 
-g=sns.heatmap(df[top_corr_features].corr(),annot=True,cmap="RdYlGn")
+leaugeHeatMap=sns.heatmap(df[top_corr_features].corr(),annot=True,cmap="RdYlGn")
 
 plt.show()
