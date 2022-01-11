@@ -11,15 +11,16 @@ def getData(mainSummoner, verboose):
     time = 10 #time on which the AI is trained (in minutes)
 
     #blueTeam:
-    #must: blueTotalExperience, blueExperienceDiff, blueAvgLevel
+    #must: blueTotalExperience, blueExperienceDiff
 
     #redTeam:
-    #must: redAvgLevel
-    #test: redExperienceDiff, redGoldDiff
+    #test: redExperienceDiff
 
     encryptedSummonerID = json.loads(requests.get(f"https://eun1.api.riotgames.com/lol/summoner/v4/summoners/by-name/{mainSummoner}?api_key={apiKey}").text)["id"]
     gameDataDict  = json.loads(requests.get(f"https://eun1.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/{encryptedSummonerID}?api_key={apiKey}").text)
     eventDataDict = json.loads(requests.get("https://127.0.0.1:2999/liveclientdata/eventdata", verify=False).text)
+    summonerExperience = json.loads(requests.get("https://127.0.0.1:2999/liveclientdata/playerlist", verify=False).text)
+
 
     summonerNames = {"redTeam": [], "blueTeam": []}
     encryptedSummonersID = {"redTeam": [], "blueTeam": []}
@@ -35,17 +36,18 @@ def getData(mainSummoner, verboose):
         else:
             print("He is a spectator")
 
+
     blueFirstBlood = 0
     blueTowersDestroyed = 0
     blueDragons = 0
     blueHeralds = 0
     blueEliteMonsters = 0
+    blueAvgLevel = 0
     blueKills = 0
     blueDeaths = 0
     blueAssists = 0
     blueTotalGold = 0
     blueTotalMinionsKilled = 0
-    blueGoldDiff = 0
     blueCSPerMin = 0
     blueGoldPerMin = 0
 
@@ -54,6 +56,7 @@ def getData(mainSummoner, verboose):
     redDragons = 0
     redEliteMonsters = 0
     redHeralds = 0
+    redAvgLevel = 0
     redKills = 0
     redDeaths = 0
     redAssists = 0
@@ -63,10 +66,12 @@ def getData(mainSummoner, verboose):
     redGoldPerMin = 0
 
 
-    for event in eventDataDict:
+    for event in eventDataDict["Events"]:
         if event["EventName"] == "FirstBrick":
             if event["KillerName"] in summonerNames["blueTeam"]:
-                blueFirstBlood = 1            
+                blueFirstBlood = 1
+            else:
+                redFirstBlood = 1         
         if event["EventName"] == "TurretKilled":
             if event["KillerName"] in summonerNames["blueTeam"]:
                 blueTowersDestroyed += 1
@@ -82,6 +87,14 @@ def getData(mainSummoner, verboose):
                 blueHeralds += 1
             else:
                 redHeralds += 1
+    
+    for summoner in summonerExperience:
+        if summoner["summonerName"] in summonerNames["blueTeam"]:
+            blueAvgLevel += summoner["level"]
+        elif summoner["summonerName"] in summonerNames["redTeam"]:
+            redAvgLevel += summoner["level"]
+        else:
+            print(f"{summoner} is in neither teams")
 
     blueEliteMonsters = blueDragons + blueHeralds
     redEliteMonsters = redDragons + redHeralds
@@ -130,6 +143,10 @@ def getData(mainSummoner, verboose):
     redCSPerMin = redTotalMinionsKilled / time
     redGoldPerMin = redTotalGold / time
     blueGoldDiff = blueTotalGold - redTotalGold
+    redGoldDiff = redTotalGold - blueTotalGold
+    blueAvgLevel = blueAvgLevel / 5
+    redAvgLevel = redAvgLevel / 5
+
 
     if verboose:
         print(f"Blue Kills {blueKills}\
@@ -144,7 +161,14 @@ def getData(mainSummoner, verboose):
                 \nredTotalGold {redTotalGold}\
                 \nredTotalMinionsKilled {redTotalMinionsKilled}\
                 \nredCSPerMin {redCSPerMin}\
-                \nredGoldPerMin {redGoldPerMin}")
+                \nredGoldPerMin {redGoldPerMin}\
+                \nblueAvgLevel {blueAvgLevel}\
+                \nredAvgLevel {redAvgLevel}\
+                \nblueEliteMonsters {blueEliteMonsters}\
+                \nredEliteMonsters {redEliteMonsters}\
+                \nblueFirstBlood {blueFirstBlood}\
+                \nredFirstBlood {redFirstBlood}\
+                \nredGoldDiff{redGoldDiff}")
 
     return [summonerNames, blueKills, blueDeaths, 
             blueAssists, blueTotalGold, blueTotalMinionsKilled,
