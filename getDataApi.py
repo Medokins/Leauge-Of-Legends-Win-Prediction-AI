@@ -11,6 +11,16 @@ def getData(mainSummoner, verboose):
 
     time = 10 #time on which the AI is trained
 
+    #blueTeam:
+    #to do: blueFirstBlood, blueEliteMonsters, blueDragons
+    #must: blueTotalExperience, blueExperienceDiff, blueAvgLevel
+    #test: blueTowersDestroyed
+
+    #redTeam:
+    #to do: redFirstBlood, redEliteMonsters, redDragons
+    #must: redDeaths, redAvgLevel
+    #test: redTowersDestroyed, redKills, redExperienceDiff, redGoldDiff
+
     encryptedSummonerID = json.loads(requests.get(f"https://eun1.api.riotgames.com/lol/summoner/v4/summoners/by-name/{mainSummoner}?api_key={apiKey}").text)["id"]
     gameDataDict  = json.loads(requests.get(f"https://eun1.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/{encryptedSummonerID}?api_key={apiKey}").text)
 
