@@ -8,3 +8,5 @@ df = df.drop('gameId', axis=1)
 
 X = df.drop('blueWins', axis = 1).values
 y = df['blueWins'].values
+
+#in progress

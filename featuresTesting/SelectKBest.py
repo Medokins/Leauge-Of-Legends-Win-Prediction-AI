@@ -10,3 +10,4 @@ X = df.drop('blueWins', axis = 1).values
 y = df['blueWins'].values
 
 bestfeatures = SelectKBest(score_func=chi2, k=10)
+#in progress

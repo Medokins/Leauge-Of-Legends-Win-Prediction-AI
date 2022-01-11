@@ -2,9 +2,10 @@ import requests
 import json
 from items import items
 
-f = open("C:/Users/medok/OneDrive/Desktop/Python/Leauge of legends/apiKey.txt", "r") #path to the apiKey file
+f = open("C:/Users/medok/OneDrive/Desktop/Python/Leauge of legends/apiKey.txt", "r") #put the path to yout apiKey
 apiKey = f.read()
-mainSummoner = "Aaron II"
+mainSummoner = "Aaron II" #put your nick here
+time = 10
 
 def getData(mainSummoner, verboose):
 
