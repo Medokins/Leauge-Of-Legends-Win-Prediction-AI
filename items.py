@@ -30,7 +30,7 @@ items = {
 "Cloak of Agility": 600,
 "Cloth Armor": 300,
 "Control Ward": 75,
-"Corruption Potion": 500,
+"Corrupting Potion": 500,
 "Cosmic Drive": 3000,
 "Crown of the Shattered Queen": 2800,
 "Crystalline Bracer": 650,
@@ -199,6 +199,5 @@ items = {
 "Perfectly Timed Stopwatch": 0,
 "Slightly Magical Footwear": 0,
 "Scarecrow Effigy": 0,
-"Corrupting Potion": 500,
 "Farsight Alteration": 0,
 }
