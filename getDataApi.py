@@ -2,7 +2,7 @@ import requests
 import json
 from items import items
 
-f = open("C:/Users/medok/OneDrive/Desktop/Python/Leauge of legends/apiKey.txt", "r") #put the path to yout apiKey
+f = open("C:/Users/medok/OneDrive/Desktop/Python/Leauge of legends/apiKey.txt", "r") #put the path to your apiKey
 apiKey = f.read()
 mainSummoner = "Aaron II" #put your nick here
 
@@ -12,9 +12,9 @@ def getData(mainSummoner, verboose):
 
     #blueTeam:
     #must: blueTotalExperience, blueExperienceDiff
-
+    
     #redTeam:
-    #test: redExperienceDiff
+    #test: blueTotalExperience, redExperienceDiff
 
     encryptedSummonerID = json.loads(requests.get(f"https://eun1.api.riotgames.com/lol/summoner/v4/summoners/by-name/{mainSummoner}?api_key={apiKey}").text)["id"]
     gameDataDict  = json.loads(requests.get(f"https://eun1.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/{encryptedSummonerID}?api_key={apiKey}").text)
@@ -149,28 +149,34 @@ def getData(mainSummoner, verboose):
 
 
     if verboose:
-        print(f"Blue Kills {blueKills}\
+        print(f"\nblueFirstBlood {blueFirstBlood}\
+                \nBlue Kills {blueKills}\
                 \nblueDeaths {blueDeaths}\
                 \nblueAssits {blueAssists}\
+                \nblueEliteMonsters {blueEliteMonsters}\
+                \nblueDragons {blueDragons}\
+                \nblueHeralds {blueHeralds}\
+                \nblueTowersDestroyed {blueTowersDestroyed}\
                 \nblueTotalGold {blueTotalGold}\
+                \nblueAvgLevel {blueAvgLevel}\
                 \nblueTotalMinionsKilled {blueTotalMinionsKilled}\
                 \nblueGoldDiff {blueGoldDiff}\
                 \nblueCSPerMin {blueCSPerMin}\
                 \nblueGoldPerMin {blueGoldPerMin}\
-                \nredAssists {redAssists}\
-                \nredTotalGold {redTotalGold}\
-                \nredTotalMinionsKilled {redTotalMinionsKilled}\
-                \nredCSPerMin {redCSPerMin}\
-                \nredGoldPerMin {redGoldPerMin}\
-                \nblueAvgLevel {blueAvgLevel}\
-                \nredAvgLevel {redAvgLevel}\
-                \nblueEliteMonsters {blueEliteMonsters}\
-                \nredEliteMonsters {redEliteMonsters}\
-                \nblueFirstBlood {blueFirstBlood}\
                 \nredFirstBlood {redFirstBlood}\
-                \nredGoldDiff{redGoldDiff}")
+                \nredKills {redKills}\
+                \nredDeaths {redDeaths}\
+                \nredAssists {redAssists}\
+                \nredEliteMonsters {redEliteMonsters}\
+                \nredDragons {redDragons}\
+                \nredHeralds {redHeralds}\
+                \nredTowersDestroyed {redTowersDestroyed}\
+                \nredTotalGold {redTotalGold}\
+                \nredAvgLevel {redAvgLevel}\
+                \nredTotalMinionsKilled {redTotalMinionsKilled}\
+                \nredGoldDiff{redGoldDiff}\
+                \nredCSPerMin {redCSPerMin}\
+                \nredGoldPerMin {redGoldPerMin}")
 
-    return [summonerNames, blueKills, blueDeaths, 
-            blueAssists, blueTotalGold, blueTotalMinionsKilled,
-            blueGoldDiff, blueCSPerMin, blueGoldPerMin, redAssists,
-            redTotalGold, redTotalMinionsKilled, redCSPerMin, redGoldPerMin]
+    return [summonerNames, blueFirstBlood, blueKills, blueDeaths, blueAssists,blueEliteMonsters, blueDragons,blueHeralds,blueTowersDestroyed, blueTotalGold,blueAvgLevel, blueTotalMinionsKilled, blueGoldDiff, blueCSPerMin, blueGoldPerMin,
+            redFirstBlood, redKills, redDeaths, redAssists, redEliteMonsters, redDragons, redHeralds,redTowersDestroyed, redTotalGold, redAvgLevel, redTotalMinionsKilled, redGoldDiff, redCSPerMin, redGoldPerMin]
