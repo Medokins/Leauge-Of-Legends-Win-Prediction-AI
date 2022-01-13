@@ -111,9 +111,10 @@ def getData(mainSummoner, verboose):
 
         totalSummonerGold = 0
         for i in range(len(summonerItems)):
-            itemPrice = items[summonerItems[i]["displayName"]]
-            totalSummonerGold += itemPrice
-
+            if summonerItems[i] in items:
+                itemPrice = items[summonerItems[i]["displayName"]]
+                totalSummonerGold += itemPrice
+                
         blueTotalGold += totalSummonerGold
 
         blueTotalMinionsKilled += summonerScore["creepScore"]
@@ -134,8 +135,9 @@ def getData(mainSummoner, verboose):
 
         totalSummonerGold = 0
         for i in range(len(summonerItems)):
-            itemPrice = items[summonerItems[i]["displayName"]]
-            totalSummonerGold += itemPrice
+            if summonerItems[i] in items:
+                itemPrice = items[summonerItems[i]["displayName"]]
+                totalSummonerGold += itemPrice
         redTotalGold += totalSummonerGold
 
         redTotalMinionsKilled += summonerScore["creepScore"]
