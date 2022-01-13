@@ -1,6 +1,6 @@
 # Leauge-Win-Prediction-AI
 
-This is a test version of AI which is still in development, some items might be missing, and I still need to change some features.
+This is a test version of AI which is still in development.
 
 In order to work, you need to download [this](https://www.kaggle.com/bobbyscience/league-of-legends-diamond-ranked-games-10-min) dataset and put it in "datasets" directory in your project directory.
 
