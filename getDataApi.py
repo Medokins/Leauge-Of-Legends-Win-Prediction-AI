@@ -114,6 +114,8 @@ def getData(mainSummoner, verboose):
             if summonerItems[i] in items:
                 itemPrice = items[summonerItems[i]["displayName"]]
                 totalSummonerGold += itemPrice
+            else:
+                print(f"No item named: {summonerItems[i]}")
                 
         blueTotalGold += totalSummonerGold
 
@@ -138,6 +140,8 @@ def getData(mainSummoner, verboose):
             if summonerItems[i] in items:
                 itemPrice = items[summonerItems[i]["displayName"]]
                 totalSummonerGold += itemPrice
+            else:
+                print(f"No item named: {summonerItems[i]}")
         redTotalGold += totalSummonerGold
 
         redTotalMinionsKilled += summonerScore["creepScore"]
