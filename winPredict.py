@@ -1,8 +1,8 @@
 from getDataApi import getData
 import pickle
 
-mainSummonerName = "Aaron II"
-liveGame = False
+mainSummonerName = "YOUR IN-GAME NICK HERE"
+liveGame = False #change this to True if You want to use it in Live Games
 
 neverSeenData = [0,6,7,6,0,0,0,0,16400,7.0,210,-1004,21.0,1640.0,1,7,6,7,1,1,0,0,17404,7.0,225,1004,22.5,1740.4]
 
