@@ -2,7 +2,7 @@ import requests
 import json
 from items import items
 
-f = open("C:/Users/medok/OneDrive/Desktop/Python/Leauge of legends/apiKey.txt", "r") #put the path to your apiKey
+f = open("apiKey.txt", "r") #put the path to your apiKey
 apiKey = f.read()
 mainSummoner = "Aaron II" #put your nick here
 
