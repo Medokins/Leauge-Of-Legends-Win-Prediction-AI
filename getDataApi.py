@@ -2,19 +2,13 @@ import requests
 import json
 from items import items
 
-f = open("apiKey.txt", "r") #put the path to your apiKey
+f = open("apiKey.txt", "r")
 apiKey = f.read()
-mainSummoner = "Aaron II" #put your nick here
+mainSummoner = "YOUR IN-GAME NICK HERE" #put your nick here
 
 def getData(mainSummoner, verboose):
 
     time = 10 #time on which the AI is trained (in minutes)
-
-    #blueTeam:
-    #must: blueTotalExperience, blueExperienceDiff
-    
-    #redTeam:
-    #test: blueTotalExperience, redExperienceDiff
 
     encryptedSummonerID = json.loads(requests.get(f"https://eun1.api.riotgames.com/lol/summoner/v4/summoners/by-name/{mainSummoner}?api_key={apiKey}").text)["id"]
     gameDataDict  = json.loads(requests.get(f"https://eun1.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/{encryptedSummonerID}?api_key={apiKey}").text)
