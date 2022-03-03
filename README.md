@@ -16,9 +16,9 @@ This a ML algorithm to predict which team will most likely win based on 10min of
 * [Kaggle Leauge Of Legends dataset](https://www.kaggle.com/bobbyscience/league-of-legends-diamond-ranked-games-10-min)
 
 ## Setup
-To run this project, paste Your API key [here](https://github.com/Medokins/Leauge-Of-Legends-Win-Prediction-AI/blob/main/apiKey.txt).
-* To get Your API key go [here](https://developer.riotgames.com/)
+To run this project, paste Your API key [here](https://github.com/Medokins/Leauge-Of-Legends-Win-Prediction-AI/blob/main/apiKey.txt). </br>
 And Your in-game nick [here](https://github.com/Medokins/Leauge-Of-Legends-Win-Prediction-AI/blob/main/winPredict.py) and [here](https://github.com/Medokins/Leauge-Of-Legends-Win-Prediction-AI/blob/main/getDataApi.py)
+* To get Your API key go [here](https://developer.riotgames.com/) 
 
 ## Note
 This was trained and tested in Diamond elo, the lower Your division is the less accurate this model will be.
