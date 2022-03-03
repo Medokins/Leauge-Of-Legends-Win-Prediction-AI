@@ -1,24 +1,7 @@
 # Leauge-Win-Prediction-AI
 
-## Table of contents
-* [General info](#general-info)
-* [Technologies](#technologies)
-* [Setup](#setup)
+Model was trained based on [this](https://www.kaggle.com/bobbyscience/league-of-legends-diamond-ranked-games-10-min) dataset (it is also available in forCurious directory). I'm leaving the training file (modelTraining.py), modelSelection.py and featureTesting directory in "forCurious" directory if You're curious how it works and what led me to choosing this classifier/those features.
 
-## General info
-This a ML algorithm to predict which team will most likely win based on 10min of in-game data
+However, all You need to do to use this in Your games is paste the API key in apiKey.txt file,and write Your in-game nick in winPredict and GetDataApi file.
 
-## Technologies
-* Riot's API for acquiring data
-* sklearn for model selection
-* seaborn + matplotlib for data visualisation
-* pickle for model loading
-* [Kaggle Leauge Of Legends dataset](https://www.kaggle.com/bobbyscience/league-of-legends-diamond-ranked-games-10-min)
-
-## Setup
-To run this project, paste Your API key [here](https://github.com/Medokins/Leauge-Of-Legends-Win-Prediction-AI/blob/main/apiKey.txt).
-* To get Your API key go [here](https://developer.riotgames.com/)
-And Your in-game nick [here](https://github.com/Medokins/Leauge-Of-Legends-Win-Prediction-AI/blob/main/winPredict.py) and [here](https://github.com/Medokins/Leauge-Of-Legends-Win-Prediction-AI/blob/main/getDataApi.py)
-
-## Note
-This was trained and tested in Diamond elo, the lower Your division is the less accurate this model will be.
+Note that this was trained and tested in Diamond elo, the lower Your division is the less accurate this model will be.
